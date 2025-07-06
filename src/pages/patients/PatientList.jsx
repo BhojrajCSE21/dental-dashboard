@@ -66,6 +66,7 @@ const PatientList = () => {
               <th className="px-4 py-3 text-blue-700">Status</th>
               <th className="px-4 py-3 text-blue-700">Last Visit</th>
               <th className="px-4 py-3 text-blue-700">Condition</th>
+              <th className="px-4 py-3 text-blue-700">Health Info</th>
               <th className="px-4 py-3 text-blue-700">Doctor</th>
               <th className="px-4 py-3 text-blue-700">Action</th>
             </tr>
@@ -97,6 +98,7 @@ const PatientList = () => {
                 </td>
                 <td className="px-4 py-3">{today}</td>
                 <td className="px-4 py-3">{patient.allergies || '—'}</td>
+                <td className="px-4 py-3">{patient.healthInfo || '—'}</td>
                 <td className="px-4 py-3">{patient.doctor || '—'}</td>
                 <td className="px-4 py-3 flex gap-2">
                   <button

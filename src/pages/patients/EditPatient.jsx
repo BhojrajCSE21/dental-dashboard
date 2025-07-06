@@ -183,6 +183,10 @@ const EditPatient = () => {
             <input name="allergies" placeholder="Condition" value={form.allergies} onChange={handleChange} className="border p-2 rounded w-full" />
           </div>
           <div>
+            <label className="block mb-1 text-gray-700">Health Info</label>
+            <input name="healthInfo" placeholder="Health Info" value={form.healthInfo || ''} onChange={handleChange} className="border p-2 rounded w-full" />
+          </div>
+          <div>
             <label className="block mb-1 text-gray-700">Doctor</label>
             <input name="doctor" placeholder="Doctor" value={form.doctor} onChange={handleChange} className="border p-2 rounded w-full" />
           </div>

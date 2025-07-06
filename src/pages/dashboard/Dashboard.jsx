@@ -36,7 +36,7 @@ const Dashboard = () => {
     <div className="space-y-8 p-6">
       <h1 className="text-3xl font-bold text-blue-800">Doctor Dashboard</h1>
 
-      {/* KPI Cards */}
+      {/* KPI Cards for the dashboard */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard label="Total Patients" value={patients.length} />
         <StatCard label="Upcoming Appointments" value={appointments.length} />
@@ -44,7 +44,7 @@ const Dashboard = () => {
         <StatCard label="Total Revenue" value={`₹${revenue}`} />
       </div>
 
-      {/* Graph + Appointments */}
+      {/* Graph + Appointments on the dashboar */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Pie Chart */}
         <div className="bg-white rounded-2xl shadow-md p-6">
@@ -69,7 +69,7 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        {/* Next 10 Appointments */}
+        {/* Next 10 Appointments of the patients*/}
         <div className="bg-white rounded-2xl shadow-md p-6">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Next 10 Appointments</h2>
           {appointments.length === 0 ? (

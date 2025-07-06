@@ -137,7 +137,7 @@ const PatientDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6 ">
-      {/* Welcome Section */}
+      {/* Welcome Section for the patient */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-6 rounded-2xl shadow-sm mb-8">
         <div className="flex items-center justify-between">
           <div>
@@ -155,7 +155,7 @@ const PatientDashboard = () => {
         </div>
       </div>
 
-      {/* KPI Cards */}
+      {/* KPI Cards about the patients*/}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {kpiCards.map((card, index) => (
           <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -211,7 +211,7 @@ const PatientDashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        {/* Medications */}
+        {/* Medications table */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold">Medications</h3>
@@ -237,7 +237,7 @@ const PatientDashboard = () => {
 
       {/* Appointments and Reports Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Appointments */}
+        {/* Appointments of the patient */}
         <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100">
           <div className="p-6 border-b">
             <div className="flex items-center space-x-8">
@@ -278,16 +278,14 @@ const PatientDashboard = () => {
                     <p className="text-sm text-gray-600">Contact Number</p>
                     <p className="font-medium">{appointment.contact}</p>
                   </div>
-                  <button className="p-2 text-red-500 hover:bg-red-50 rounded-full">
-                    ✕
-                  </button>
+                  
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Reports/Documents */}
+        {/* Reports/Documents of the patient */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold">Reports/Documents</h3>

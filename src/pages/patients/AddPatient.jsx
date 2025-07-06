@@ -23,6 +23,7 @@ const AddPatient = () => {
         height: '',
         weight: '',
         allergies: '',
+        healthInfo: '', // Added healthInfo field
         photo: '',
         doctor: '',
     });
@@ -176,6 +177,10 @@ const AddPatient = () => {
                     <div>
                         <label className="block mb-1 text-gray-700">Condition</label>
                         <input name="allergies" placeholder="Condition" value={form.allergies} onChange={handleChange} className="border p-2 rounded w-full" />
+                    </div>
+                    <div>
+                        <label className="block mb-1 text-gray-700">Health Info</label>
+                        <input name="healthInfo" placeholder="Health Info" value={form.healthInfo} onChange={handleChange} className="border p-2 rounded w-full" />
                     </div>
                     <div>
                         <label className="block mb-1 text-gray-700">Doctor</label>

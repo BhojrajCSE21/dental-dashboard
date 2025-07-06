@@ -59,6 +59,7 @@ const AddDoctor = () => {
   return (
     <div className="p-4 max-w-6xl mx-auto">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Add Doctor</h2>
+      {/* Docotr information form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         <fieldset className="space-y-4 border rounded p-4">
           <legend className="text-lg font-medium text-gray-700 mb-2">Personal Information</legend>
@@ -152,6 +153,7 @@ const AddDoctor = () => {
             <p className="text-xs text-gray-500 mt-1">JPG, PNG or GIF. Max 2MB.</p>
           </div>
         </fieldset>
+        {/* add the doctor button */}
         <div className="flex justify-end">
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Add Doctor

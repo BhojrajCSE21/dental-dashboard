@@ -51,11 +51,22 @@ const AddIncident = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    const newIncident = { ...form, id: uuidv4() };
-    upsertData('incidents', newIncident);
-    navigate('/incidents');
+  e.preventDefault();
+  const { date, time } = form;
+
+  const dateTimeString = `${date} ${time}`;
+  const appointmentDate = new Date(dateTimeString);
+
+  const newIncident = {
+    ...form,
+    id: uuidv4(),
+    appointmentDate: appointmentDate.toISOString() // Add this field
   };
+
+  upsertData('incidents', newIncident);
+  navigate('/incidents');
+};
+
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
