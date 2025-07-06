@@ -1,8 +1,11 @@
 // File: src/components/common/StatCard.jsx
-const StatCard = ({ label, value }) => (
-  <div className="bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-all">
-    <p className="text-sm text-gray-500 mb-1">{label}</p>
-    <h3 className="text-2xl font-semibold text-blue-600">{value}</h3>
+const StatCard = ({ label, value, icon, bgColor = "bg-blue-500" }) => (
+  <div className={`flex items-center p-4 rounded-xl shadow ${bgColor} text-white`}>
+    <div className="mr-4">{icon}</div>
+    <div>
+      <p className="text-sm font-medium">{label}</p>
+      <h3 className="text-xl font-bold">{value}</h3>
+    </div>
   </div>
 );
 
