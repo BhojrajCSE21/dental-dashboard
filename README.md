@@ -6,7 +6,7 @@ A responsive, role-based dental clinic management system built with **React**. T
 
 ## 🚀 Live Demo & Repository
 
-- 🔗 **Live App:** ([https://your-vercel-link](https://dental-dashboard-63fh2nlc4-bhojrajcse21s-projects.vercel.app/dashboard))
+- 🔗 **Live App:** [https://dental-dashboard-63fh2nlc4-bhojrajcse21s-projects.vercel.app/dashboard](https://dental-dashboard-63fh2nlc4-bhojrajcse21s-projects.vercel.app/dashboard)
 - 💻 **GitHub Repo:** [https://github.com/BhojrajCSE21/dental-dashboard.git](https://github.com/BhojrajCSE21/dental-dashboard.git)
 
 ---
