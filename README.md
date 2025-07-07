@@ -21,10 +21,7 @@ A responsive, role-based dental clinic management system built with **React**. T
 - [Mock Data Format](#-mock-data-format)
 - [Setup & Installation](#-setup--installation)
 - [Deployment](#-deployment)
-- [Technical Decisions](#-technical-decisions)
-- [Deliverables](#-deliverables)
-- [Evaluation Criteria](#-evaluation-criteria)
-- [Author](#-author)
+
 
 ---
 
@@ -86,7 +83,6 @@ Authentication is simulated using hardcoded users and stored in `localStorage`.
 src/
 ├── components/       # Reusable UI components
 ├── context/          # Auth context and role logic
-├── data/             # Sample/mock data for localStorage
 ├── pages/            # Page views: dashboard, login, patients, calendar, etc.
 ├── utils/            # localStorage and helper utilities
 ├── App.jsx
