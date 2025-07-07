@@ -20,7 +20,6 @@ A responsive, role-based dental clinic management system built with **React**. T
 - [Authentication & Roles](#-authentication--roles)
 - [Mock Data Format](#-mock-data-format)
 - [Setup & Installation](#-setup--installation)
-- [Deployment](#-deployment)
 
 
 ---
