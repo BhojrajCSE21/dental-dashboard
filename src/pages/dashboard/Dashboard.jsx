@@ -3,28 +3,37 @@ import { getData } from '../../utils/localStorageUtils';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import StatCard from '../../components/common/StatCard';
 import { CalendarDays, User, CheckCircle, DollarSign } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([]);
   const [patients, setPatients] = useState([]);
   const [revenue, setRevenue] = useState(0);
-  const [completedCount, setCompletedCount] = useState(0);
+  const [completedCount, setCompletedCount] = useState("50");
 
   useEffect(() => {
-    const incidents = getData('incidents') || [];
+    const syncDashboard = () => {
+      setPatients(getData('patients') || []);
+      const incidents = getData('incidents') || [];
+      const completed = incidents.filter(i => i.status === 'Completed');
+      const totalRevenue = completed.reduce((acc, i) => acc + (i.cost || 0), 0);
+      const allSorted = incidents
+        .filter(i => i.appointmentDate)
+        .sort((a, b) => new Date(b.appointmentDate) - new Date(a.appointmentDate));
+      setAppointments(allSorted.slice(0, 10));
+      setCompletedCount(completed.length);
+      setRevenue(totalRevenue);
+    };
 
-    const allSorted = incidents
-      .filter(i => i.appointmentDate)
-      .sort((a, b) => new Date(b.appointmentDate) - new Date(a.appointmentDate)); // latest first
+    // Initial fetch
+    syncDashboard();
 
-    const completed = incidents.filter(i => i.status === 'Completed');
-    const totalRevenue = completed.reduce((acc, i) => acc + (i.cost || 0), 0);
+    // Listen to localStorage changes (e.g., after adding patient/incident)
+    window.addEventListener('storage', syncDashboard);
 
-    setAppointments(allSorted.slice(0, 10)); // show top 10 recent
-    setCompletedCount(completed.length);
-    setRevenue(totalRevenue);
-    setPatients(getData('patients') || []);
+    return () => window.removeEventListener('storage', syncDashboard);
   }, []);
+
 
 
   const pieData = [
@@ -42,8 +51,9 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard icon={<User className="text-white" />} label="Total Patients" value={patients.length} bgColor="bg-blue-600" />
         <StatCard icon={<CalendarDays className="text-white" />} label="Upcoming Appointments" value={appointments.length} bgColor="bg-indigo-500" />
-        <StatCard icon={<CheckCircle className="text-white" />} label="Completed Treatments" value={completedCount} bgColor="bg-green-500" />
-        <StatCard icon={<DollarSign className="text-white" />} label="Total Revenue" value={`₹${revenue}`} bgColor="bg-yellow-500" />
+        <StatCard icon={<CheckCircle className="text-white" />} label="Completed Treatments" value={42} bgColor="bg-green-500" />
+        <StatCard icon={<DollarSign className="text-white" />} label="Total Revenue" value="25,000" bgColor="bg-yellow-500" />
+
       </div>
 
       {/* Charts & Lists */}
@@ -78,48 +88,80 @@ const Dashboard = () => {
           {appointments.length === 0 ? (
             <p className="text-sm text-gray-500">No appointments found.</p>
           ) : (
-            <table className="min-w-full text-sm text-left text-gray-600">
-              <thead className="text-xs uppercase bg-gray-100 text-gray-700">
-                <tr>
-                  <th className="px-4 py-3">Patient</th>
-                  <th className="px-4 py-3">Date</th>
-                  <th className="px-4 py-3">Time</th>
-                  <th className="px-4 py-3">Doctor</th>
-                  <th className="px-4 py-3">Status</th>
-                  <th className="px-4 py-3">Reason</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {appointments.map((apt, idx) => {
-                  const patient = patients.find(p => p.id === apt.patientId);
-                  return (
-                    <tr key={apt.id || idx} className="hover:bg-gray-50">
-                      <td className="px-4 py-3 flex items-center gap-3">
-                        <img
-                          src={patient?.photo || `https://i.pravatar.cc/40?img=${idx + 10}`}
-                          alt="Patient"
-                          className="w-8 h-8 rounded-full object-cover"
-                        />
-                        <span className="font-medium">
-                          {patient
-                            ? [patient.firstName, patient.middleName, patient.lastName].filter(Boolean).join(' ')
-                            : '—'}
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        {apt.date || new Date(apt.appointmentDate).toLocaleDateString()}
-                      </td>
-                      <td className="px-4 py-3">{apt.time || new Date(apt.appointmentDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-                      <td className="px-4 py-3">{apt.doctor || '—'}</td>
-                      <td className="px-4 py-3">{apt.status || '—'}</td>
-                      <td className="px-4 py-3">{apt.reason || apt.title || '—'}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <>
+              <table className="min-w-full text-sm text-left text-gray-600">
+                <thead className="text-xs uppercase bg-gray-100 text-gray-700">
+                  <tr>
+                    <th className="px-4 py-3">Patient</th>
+                    <th className="px-4 py-3">Date</th>
+                    <th className="px-4 py-3">Time</th>
+                    <th className="px-4 py-3">Doctor</th>
+                    <th className="px-4 py-3">Status</th>
+                    <th className="px-4 py-3">Reason</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {Array.from({ length: Math.max(appointments.length, 3) }).map((_, idx) => {
+                    const apt = appointments[idx];
+                    const patient = apt ? patients.find(p => p.id === apt.patientId) : null;
+
+                    return (
+                      <tr key={apt?.id || `empty-${idx}`} className="hover:bg-gray-50">
+                        <td className="px-4 py-3 flex items-center gap-3">
+                          {apt ? (
+                            <>
+                              <img
+                                src={patient?.photo || `https://i.pravatar.cc/40?img=${idx + 10}`}
+                                alt="Patient"
+                                className="w-8 h-8 rounded-full object-cover"
+                              />
+                              <span className="font-medium">
+                                {patient
+                                  ? [patient.firstName, patient.middleName, patient.lastName]
+                                    .filter(Boolean)
+                                    .join(' ')
+                                  : '—'}
+                              </span>
+                            </>
+                          ) : (
+                            <span className="text-gray-300 italic">—</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-3">
+                          {apt ? apt.date || new Date(apt.appointmentDate).toLocaleDateString() : <span className="text-gray-300">—</span>}
+                        </td>
+                        <td className="px-4 py-3">
+                          {apt
+                            ? apt.time ||
+                            new Date(apt.appointmentDate).toLocaleTimeString([], {
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })
+                            : <span className="text-gray-300">—</span>}
+                        </td>
+                        <td className="px-4 py-3">{apt ? apt.doctor || '—' : <span className="text-gray-300">—</span>}</td>
+                        <td className="px-4 py-3">{apt ? apt.status || '—' : <span className="text-gray-300">—</span>}</td>
+                        <td className="px-4 py-3">{apt ? apt.reason || apt.title || '—' : <span className="text-gray-300">—</span>}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+
+              </table>
+
+              {/* View all appointments link */}
+              <div className="mt-8 ml-[12rem] justify-center items-center">
+                <Link
+                  to="/incidents"
+                  className="text-gray-600 text-sm font-medium hover:underline"
+                >
+                  View all appointments
+                </Link>
+              </div>
+            </>
           )}
         </div>
+
 
       </div>
     </div>

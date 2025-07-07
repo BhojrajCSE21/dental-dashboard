@@ -8,7 +8,7 @@ export const getData = (key) => {
   }
 };
 
-// Save (overwrite) data to localStorage
+// Saving (overwrite) data to localStorage
 export const saveData = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
