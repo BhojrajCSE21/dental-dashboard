@@ -80,10 +80,10 @@ Authentication is simulated using hardcoded users and stored in `localStorage`.
 ## 📁 Project Structure
 
 src/
-├── components/       # Reusable UI components
-├── context/          # Auth context and role logic
-├── pages/            # Page views: dashboard, login, patients, calendar, etc.
-├── utils/            # localStorage and helper utilities
+├── components/       
+├── context/         
+├── pages/           
+├── utils/           
 ├── App.jsx
 └── main.jsx
 
@@ -94,6 +94,6 @@ src/
 git clone https://github.com/yourusername/dental-dashboard.git
 cd dental-dashboard
 npm install
-npm run dev    # or npm start (if using CRA)
+npm run dev   
 ```
 
