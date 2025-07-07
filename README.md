@@ -1,13 +1,13 @@
 # 🦷 ENTNT Dental Center Management Dashboard
 
-A responsive, role-based dental clinic management system built with **React**. This project allows dentists (Admins) to manage patients, appointments, treatments, and file uploads — all using localStorage (no backend). Patients can view their own data and history.
+A responsive, role-based dental clinic management system built with **React**. This project allows dentists (Admins) to manage patients, appointments, treatments, and file uploads — all using localStorage (no backend). Patients can view their data and history.
 
 ---
 
 ## 🚀 Live Demo & Repository
 
 - 🔗 **Live App:** [https://your-vercel-link](https://your-vercel-link)
-- 💻 **GitHub Repo:** [https://github.com/yourusername/dental-dashboard](https://github.com/yourusername/dental-dashboard)
+- 💻 **GitHub Repo:** [https://github.com/BhojrajCSE21/dental-dashboard.git](https://github.com/BhojrajCSE21/dental-dashboard.git)
 
 ---
 
@@ -38,8 +38,8 @@ A responsive, role-based dental clinic management system built with **React**. T
 
 ### 👨‍⚕️ Admin Features
 - Dashboard with KPIs: total patients, appointments, completed treatments, revenue.
-- Patient management: view, add, edit, delete patients.
-- Appointment management: create, update, delete appointments (incidents).
+- Patient management: view, add, edit, and delete patients.
+- Appointment management: create, update, and delete appointments (incidents).
 - File uploads: upload and preview invoices/x-rays (stored as base64/blob URLs).
 - Calendar view: monthly and weekly views of appointments.
 - View recent appointments in a table with a “View All” link to the appointment list.
@@ -91,7 +91,7 @@ src/
 ## 🖥️ Setup & Installation
 
 ```bash
-git clone https://github.com/yourusername/dental-dashboard.git
+git clone https://github.com/BhojrajCSE21/dental-dashboard.git.git
 cd dental-dashboard
 npm install
 npm run dev   
