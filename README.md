@@ -1,12 +1,104 @@
-# React + Vite
+# 🦷 ENTNT Dental Center Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, role-based dental clinic management system built with **React**. This project allows dentists (Admins) to manage patients, appointments, treatments, and file uploads — all using localStorage (no backend). Patients can view their own data and history.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo & Repository
 
-## Expanding the ESLint configuration
+- 🔗 **Live App:** [https://your-vercel-link](https://your-vercel-link)
+- 💻 **GitHub Repo:** [https://github.com/yourusername/dental-dashboard](https://github.com/yourusername/dental-dashboard)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧾 Table of Contents
+
+- [Screenshots](#-screenshots)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Authentication & Roles](#-authentication--roles)
+- [Mock Data Format](#-mock-data-format)
+- [Setup & Installation](#-setup--installation)
+- [Deployment](#-deployment)
+- [Technical Decisions](#-technical-decisions)
+- [Deliverables](#-deliverables)
+- [Evaluation Criteria](#-evaluation-criteria)
+- [Author](#-author)
+
+---
+
+## 📸 Screenshots
+
+### 📊 Admin Dashboard
+
+![Dashboard Screenshot](./screenshots/dashboard.png)
+
+> 💡 Add more screenshots if you'd like — like the login, calendar, or patient view screens.
+
+---
+
+## ✨ Features
+
+### 👨‍⚕️ Admin Features
+- Dashboard with KPIs: total patients, appointments, completed treatments, revenue.
+- Patient management: view, add, edit, delete patients.
+- Appointment management: create, update, delete appointments (incidents).
+- File uploads: upload and preview invoices/x-rays (stored as base64/blob URLs).
+- Calendar view: monthly and weekly views of appointments.
+- View recent appointments in a table with a “View All” link to the appointment list.
+
+### 👤 Patient Features
+- View profile
+- See upcoming appointments and treatment history
+- View uploaded medical records
+
+---
+
+## 🔐 Authentication & Roles
+
+Authentication is simulated using hardcoded users and stored in `localStorage`.
+
+### ✉️ Sample Users
+
+```json
+{
+  "users": [
+    {
+      "id": "1",
+      "role": "Admin",
+      "email": "admin@entnt.in",
+      "password": "admin123"
+    },
+    {
+      "id": "2",
+      "role": "Patient",
+      "email": "john@entnt.in",
+      "password": "patient123",
+      "patientId": "p1"
+    }
+  ]
+}
+
+
+## 📁 Project Structure
+graphql
+Copy
+Edit
+src/
+├── components/       # Reusable UI components
+├── context/          # Auth context and role logic
+├── pages/            # Page views: dashboard, login, patients, calendar, etc.
+├── utils/            # localStorage and helper utilities
+├── App.jsx
+└── main.jsx
+
+
+## 🖥️ Steps
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/dental-dashboard.git
+cd dental-dashboard
+npm install
+npm run dev    # or npm start (if using CRA)
