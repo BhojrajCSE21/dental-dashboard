@@ -79,26 +79,52 @@ Authentication is simulated using hardcoded users and stored in `localStorage`.
     }
   ]
 }
-
+```
 
 ## 📁 Project Structure
-graphql
-Copy
-Edit
+
 src/
 ├── components/       # Reusable UI components
 ├── context/          # Auth context and role logic
+├── data/             # Sample/mock data for localStorage
 ├── pages/            # Page views: dashboard, login, patients, calendar, etc.
 ├── utils/            # localStorage and helper utilities
 ├── App.jsx
 └── main.jsx
 
 
-## 🖥️ Steps
-bash
-Copy
-Edit
+## 🖥️ Setup & Installation
+
+```bash
 git clone https://github.com/yourusername/dental-dashboard.git
 cd dental-dashboard
 npm install
 npm run dev    # or npm start (if using CRA)
+```
+
+## 📦 Deployment
+
+- **Vercel:** One-click deploy to Vercel.
+- **Docker:** Pre-configured Dockerfile for containerization.
+
+## 🧑‍💻 Technical Decisions
+
+- Chose React for its component-based architecture, allowing reusability and easier maintenance.
+- Used localStorage for a simple, backend-less data storage solution.
+- Implemented role-based access to demonstrate authentication and authorization concepts.
+
+## 📜 Deliverables
+
+- Fully functional dental management dashboard.
+- Documentation: setup, features, and user guide.
+- Source code hosted on GitHub.
+
+## ✅ Evaluation Criteria
+
+- Code quality and organization.
+- Completeness and functionality of features.
+- Quality of documentation.
+
+## 👤 Author
+
+- Your Name - [yourusername](https://github.com/yourusername)
