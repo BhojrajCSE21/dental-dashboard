@@ -96,3 +96,9 @@ npm install
 npm run dev   
 ```
 
+## Login credentials
+admin: admin@entnt.in
+password: admin123
+
+patient: john@entnt.in
+password: patient123
