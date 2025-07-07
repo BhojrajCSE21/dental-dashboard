@@ -28,9 +28,8 @@ A responsive, role-based dental clinic management system built with **React**. T
 
 ### 📊 Admin Dashboard
 
-![Dashboard Screenshot](./screenshots/dashboard.png)
+![Dashboard Screenshot](https://github.com/BhojrajCSE21/dental-dashboard/raw/master/Screenshot%202025-07-07%20223034.png)
 
-> 💡 Add more screenshots if you'd like — like the login, calendar, or patient view screens.
 
 ---
 
