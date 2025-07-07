@@ -80,11 +80,7 @@ Authentication is simulated using hardcoded users and stored in `localStorage`.
   ]
 }
 
-
-## 📁 Project Structure
-graphql
-Copy
-Edit
+ 📁 Project Structure
 src/
 ├── components/       # Reusable UI components
 ├── context/          # Auth context and role logic
@@ -93,11 +89,7 @@ src/
 ├── App.jsx
 └── main.jsx
 
-
-## 🖥️ Steps
-bash
-Copy
-Edit
+🖥️ Steps
 git clone https://github.com/yourusername/dental-dashboard.git
 cd dental-dashboard
 npm install
